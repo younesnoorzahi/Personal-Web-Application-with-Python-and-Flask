@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ info.name }} - Personal Website{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-gray-800">{{ info.name }}</h1>
+            <p class="text-xl text-blue-600 mt-2">{{ info.title }}</p>
+            <div class="mt-4 max-w-2xl mx-auto">
+                <p class="text-gray-600">{{ info.bio }}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Skills</h2>
+        <div class="flex flex-wrap gap-2">
+            {% for skill in info.skills %}
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Projects</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for project in info.projects %}
+                <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+                    <h3 class="text-xl font-semibold text-gray-800">{{ project.name }}</h3>
+                    <p class="text-gray-600 mt-2">{{ project.description }}</p>
+                    <a href="{{ project.link }}" class="text-blue-600 hover:underline mt-2 inline-block">View Project</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
